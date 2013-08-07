@@ -3,7 +3,7 @@
 ##########################################
 __module_author__ = 'Aww'
 __module_name__ = 'Seen Database'
-__module_version__ = '0.0.4'
+__module_version__ = '1.0.1'
 __module_description__ = 'Seen Database made with sqlite3 and Python'
 ##########################################
 import sqlite3, xchat, datetime, os
@@ -89,8 +89,8 @@ seen = Seen()
 xchat.hook_unload(seen.on_unload)
 xchat.hook_server("PRIVMSG", seen.parse)
 xchat.hook_command("seen", seen.lastseen)
-xchat.hook_command("seen-info", seen.info)
-xchat.hook_command("seen-commit", seen.commit)
+xchat.hook_command("seen->info", seen.info)
+xchat.hook_command("seen->commit", seen.commit)
 xchat.prnt("%s version %s by %s has been loaded." % (__module_name__, __module_version__, __module_author__))
 seen.info();
 # xchat.prnt("04Note: NEVER LOAD THIS MORE THEN ONCE! IF YOU NEED TO RELOAD IT MAKE SURE TO UNLOAD IT FIRST!!")
