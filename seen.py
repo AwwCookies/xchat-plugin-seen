@@ -3,7 +3,7 @@
 ##########################################
 __module_author__ = 'Aww'
 __module_name__ = 'Seen Database'
-__module_version__ = '1.0.1'
+__module_version__ = '1.2.0'
 __module_description__ = 'Seen Database made with sqlite3 and Python'
 ##########################################
 import sqlite3, xchat, datetime, os
