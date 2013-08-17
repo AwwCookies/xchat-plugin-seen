@@ -3,7 +3,7 @@
 ##########################################
 __module_author__ = 'Aww'
 __module_name__ = 'Seen Database'
-__module_version__ = '1.1.0'
+__module_version__ = '1.0.1'
 __module_description__ = 'Seen Database made with sqlite3 and Python'
 ##########################################
 import sqlite3, xchat, datetime, os
@@ -47,11 +47,14 @@ class Seen:
 
     def lastseen(self, word, word_eol, userdata = None):
         found = False
+        colors = ['12', '13']
+        color = 0
         if word[1] == '-w':
             if len(word) > 2:
                 for nick in self.curs.execute("SELECT * FROM seen WHERE nick LIKE '%s'" % word[2]):
-                    xchat.prnt(nick[1])
+                    xchat.prnt(u'\x03' + colors[color] + nick[1])
                     found = True
+                    color = not color # if 1 -> 0 if 0 -> 1
                 if not found:
                     print "%s was not found in the database." % word[2]
             else:
