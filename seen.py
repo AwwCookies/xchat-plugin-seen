@@ -3,7 +3,7 @@
 ##########################################
 __module_author__ = 'Aww'
 __module_name__ = 'Seen Database'
-__module_version__ = '1.0.1'
+__module_version__ = '1.1.0'
 __module_description__ = 'Seen Database made with sqlite3 and Python'
 ##########################################
 import sqlite3, xchat, datetime, os
@@ -47,18 +47,26 @@ class Seen:
 
     def lastseen(self, word, word_eol, userdata = None):
         found = False
-        if len(word) > 1:
-            for nick in self.curs.execute("SELECT * FROM seen"):
-                if nick[0] == word[1]:
+        if word[1] == '-w':
+            if len(word) > 2:
+                for nick in self.curs.execute("SELECT * FROM seen WHERE nick LIKE '%s'" % word[2]):
                     xchat.prnt(nick[1])
                     found = True
-                    break;
-            if not found:
-                print "%s was not found in the database." % word[1]
-
+                if not found:
+                    print "%s was not found in the database." % word[2]
+            else:
+                xchat.prnt("/seen <nick>")
+                xchat.prnt("Example: /seen Aww")
         else:
-            xchat.prnt("/seen <nick>")
-            xchat.prnt("Example: /seen Aww")
+            if len(word) > 1:
+                for nick in self.curs.execute("SELECT * FROM seen WHERE nick='%s'" % word[1]):
+                    xchat.prnt(nick[1])
+                    found = True
+                if not found:
+                    print "%s was not found in the database." % word[1]
+            else:
+                xchat.prnt("/seen <nick>")
+                xchat.prnt("Example: /seen Aww")
 
     def info(self, word = None, word_eol = None, userdata = None):
         for response in self.curs.execute("SELECT Count(*) FROM seen"):
