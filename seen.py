@@ -101,7 +101,7 @@ class Seen:
             "\x0313\x02Temp File\x02: %s\n"     #5
             "\x0313\x02Version\x02: %s\n"       #6
             %(
-            float(db_size)/1024.0,              #1
+            float(db_size/1024.0),              #1
             float(temp_db_size/1024.0),         #2
             int(num_of_entrys),                 #3
             db_file,                            #4
