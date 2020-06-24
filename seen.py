@@ -117,4 +117,4 @@ xchat.hook_command("seen->info", seen.info)
 xchat.hook_command("seen->commit", seen.commit)
 xchat.prnt("%s version %s by %s has been loaded." % (__module_name__, __module_version__, __module_author__))
 seen.info();
-# xchat.prnt("\x02\x0304Note: NEVER LOAD THIS MORE THEN ONCE! IF YOU NEED TO RELOAD IT MAKE SURE TO UNLOAD IT FIRST!!\x02\x03")
+# xchat.prnt("\x02\x0304Note: NEVER LOAD THIS MORE THAN ONCE! IF YOU NEED TO RELOAD IT MAKE SURE TO UNLOAD IT FIRST!!\x02\x03")
